@@ -1,10 +1,11 @@
 <%-- 
-    Document   : MasterPage
-    Created on : 5 Aug, 2020, 12:24:37 AM
+    Document   : demoPage
+    Created on : 5 Aug, 2020, 2:56:59 AM
     Author     : rowdy
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -26,11 +27,9 @@
     
     /* Set gray background color and 100% height */
     .sidenav {
+      padding-top: 20px;
       background-color: #f1f1f1;
       height: 100%;
-      padding-top: 20px;
-      display:block;
-      overflow: auto;
     }
     
     /* Set black background color, white text and some padding */
@@ -40,51 +39,11 @@
       padding: 15px;
     }
     .topbar{
-    background-color: aliceblue;
-    padding-top: 20px;
     display:block;
     height:620px;
     overflow: auto;
     }
     
-    .card {
-        
-        border-radius: 15px;
-        border: 2px solid buttonhighlight;
-     
-          
-        padding: 10px 15px 0px 15px ;
-       
-        width: 90%;
-        height: auto;
-        
-        
-        
-        align-items: center;
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 30px; /* Added */
-}
-
-img{
-        padding: 0px;
-        border: 1px solid black;
-        margin-bottom: 10px;
-}
-.row{
-   
-    margin-bottom: 0px;
-}
-hr {
-    margin-top: 0px;
-     border: 0;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-.glyphicon {
-    font-size: 20px;
-}
-
- 
     
     /* On small screens, set height to 'auto' for sidenav and grid */
     @media screen and (max-width: 767px) {
@@ -97,32 +56,17 @@ hr {
   </style>
 </head>
 <body>
-
-<nav>
-    <%@include file="Header.jsp" %>   
-</nav>
-  
-<div class="container-fluid text-center">    
-  <div class="row content">
-    <div class="col-sm-3 sidenav">
-        <div>
-            <%@include file="LeftNav.jsp" %>
-        </div>
-    </div>
-        <div class="col-sm-6 text-left topbar"> 
-        <div>
-            <%@include file="CenterPage.jsp" %>
-        </div>
-    </div>
-    <div class="col-sm-3 sidenav ">
-        <div>
-            <%@include file="RightNav.jsp" %>
-        </div>
-    </div>
+<div class="card" style="width:400px">
+  <img class="card-img-top" src="images/iron.jpg" alt="Card image" style="width:200px">
+  <div class="card-body">
+    <h4 class="card-title">John Doe</h4>
+    <p class="card-text">Some example text.</p>
+    <a href="#" class="btn btn-primary">See Profile</a>
   </div>
+
+    
 </div>
-
-
-
+    
+    
 </body>
 </html>
