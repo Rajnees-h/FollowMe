@@ -47,7 +47,7 @@
     overflow: auto;
     }
     
-    .card {
+/*    .myCard {
         
         border-radius: 15px;
         border: 2px solid buttonhighlight;
@@ -61,16 +61,51 @@
         
         
         align-items: center;
-        margin: 0 auto; /* Added */
-        float: none; /* Added */
-        margin-bottom: 30px; /* Added */
+        margin: 0 auto;  Added 
+        float: none;  Added 
+        margin-bottom: 30px;  Added 
+}*/
+
+.menu-options{
+    
+    border-radius: 50px;
+    background-color: #f1f1f1;
+    font-size: 20px;
+    
+    
+}
+.menu-options:hover{
+    
+   
+     border: none;
+    background-color: #f1f1f1;
+    font-size: 30px;
+    
+}
+
+.userName{
+ padding-bottom: 10px;
+}
+
+
+.chatCard:hover{
+    padding: 10px 10px 0px 10px;
+    border-radius: 15px;
+    background-color:white;
 }
 
 img{
         padding: 0px;
         border: 1px solid black;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
 }
+.center-block {
+ 
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 .row{
    
     margin-bottom: 0px;
@@ -82,6 +117,11 @@ hr {
 }
 .glyphicon {
     font-size: 20px;
+}
+
+h3{
+    padding-left: 20px;
+    margin-bottom: 30px;
 }
 
  
