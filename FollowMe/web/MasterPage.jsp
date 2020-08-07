@@ -15,6 +15,70 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <style>
+      
+/*     For image galary */
+
+  * {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+.header {
+  text-align: center;
+  padding: 32px;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  padding: 0 4px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 4px;
+}
+
+.column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .column {
+    -ms-flex: 50%;
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    -ms-flex: 100%;
+    flex: 100%;
+    max-width: 100%;
+  }
+}
+
+  
+/*     For image galary */
+     
+      
+      
+      
+      
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
@@ -26,7 +90,7 @@
     
     /* Set gray background color and 100% height */
     .sidenav {
-      background-color: #f1f1f1;
+      background-color: #fff;
       height: 100%;
       padding-top: 20px;
       display:block;
@@ -66,10 +130,66 @@
         margin-bottom: 30px;  Added 
 }*/
 
+.friendCard{
+   
+    padding: 10px 10px 0px 10px;
+    border-radius: 15px;
+    background-color:white;  
+    margin: 10px 10px;
+    
+}
+.friendCard:hover{
+    
+     padding: 10px 10px 0px 10px;
+    border-radius: 15px;
+    background-color:white;
+     box-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 3px lightblue;
+}
+
+
+.infoCard{
+     border-radius: 15px;
+     border: 2px solid buttonhighlight;
+     background-color: white;
+     
+          
+     padding: 10px 15px 0px 15px ;
+       
+     width: 40%;
+     height: auto;
+        
+     align-items: center;
+     margin: 2% 5%;  Added 
+     float: none;  Added 
+     margin-bottom: 30px;  Added    
+        
+       
+}
+
+.infoCard:hover{
+     border-radius: 15px;
+     border: 2px solid buttonhighlight;
+     background-color: white;
+     
+          
+     padding: 10px 15px 0px 15px ;
+       
+     width: 40%;
+     height: auto;
+     
+    align-items: center;
+    margin: 2% 5%;  Added 
+    float: none;  Added 
+    margin-bottom: 30px;  Added
+    
+  color: white;
+  box-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 3px lightblue;
+}
+
 .menu-options{
     
     border-radius: 50px;
-    background-color: #f1f1f1;
+    background-color: #fff;
     font-size: 20px;
     
     
@@ -92,6 +212,8 @@
     padding: 10px 10px 0px 10px;
     border-radius: 15px;
     background-color:white;
+  
+    box-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 3px lightblue;
 }
 
 img{
@@ -107,7 +229,6 @@ img{
 }
 
 .row{
-   
     margin-bottom: 0px;
 }
 hr {
@@ -120,6 +241,8 @@ hr {
 }
 
 h3{
+   
+    text-shadow: 1px 1px green;
     padding-left: 20px;
     margin-bottom: 30px;
 }
@@ -127,13 +250,13 @@ h3{
  
     
     /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-width: 767px) {
+/*    @media screen and (max-width: 767px) {
       .sidenav {
         height: auto;
         padding: 15px;
       }
       .row.content {height:100%;} 
-    }
+    }*/
   </style>
 </head>
 <body>
@@ -151,12 +274,14 @@ h3{
     </div>
         <div class="col-sm-6 text-left topbar"> 
         <div>
-            <%@include file="CenterPage.jsp" %>
+            <%@include file="Photos.jsp" %>
+<!--      file="AboutProfile.jsp"  file="Friends.jsp"     file="CenterPage.jsp"-->
         </div>
     </div>
     <div class="col-sm-3 sidenav ">
         <div>
-            <%@include file="RightNav.jsp" %>
+            <%@include file="ShowProfile.jsp"%>
+<!--             file="RightNav.jsp"-->
         </div>
     </div>
   </div>
