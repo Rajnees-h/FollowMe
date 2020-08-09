@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  
   <style>
       
 /*     For image galary */
@@ -216,6 +218,13 @@ body {
     box-shadow: 1px 1px 2px black, 0 0 10px blue, 0 0 3px lightblue;
 }
 
+
+.chat-header{
+   position: relative;
+   top: 0;
+}
+
+
 img{
         padding: 0px;
         border: 1px solid black;
@@ -247,6 +256,29 @@ h3{
     margin-bottom: 30px;
 }
 
+.center {
+  margin: auto 3px;
+  width: 60%;
+  padding: 10px;
+}
+
+.left-msg{
+    width: auto;
+    height: auto;
+    margin:10px;
+    padding: 2px 10px;
+    border-radius: 50px;
+    background: pink;
+}
+
+.right-msg{
+    width: auto;
+    height: auto;
+    margin:10px;
+    padding: 2px 10px;
+    border-radius: 50px;    
+    background: white;
+}
  
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -274,8 +306,8 @@ h3{
     </div>
         <div class="col-sm-6 text-left topbar"> 
         <div>
-            <%@include file="Photos.jsp" %>
-<!--      file="AboutProfile.jsp"  file="Friends.jsp"     file="CenterPage.jsp"-->
+            <%@include file="ChatBox.jsp" %>
+<!--      file="AboutProfile.jsp"  file="Friends.jsp"   file="Photos.jsp"    file="CenterPage.jsp"-->
         </div>
     </div>
     <div class="col-sm-3 sidenav ">
