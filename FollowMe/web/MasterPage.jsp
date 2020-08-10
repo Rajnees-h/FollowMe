@@ -4,11 +4,12 @@
     Author     : rowdy
 --%>
 
+<%@page import="com.FollowMe.DatabaseClasses.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Bootstrap Example    </title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -291,12 +292,22 @@ h3{
     }*/
   </style>
 </head>
-<body>
 
+<body>
+ 
+    <%
+      session = request.getSession(false);
+      if(session != null)
+      {
+          String userId = (String) session.getAttribute("userId");
+        
+    %>
+    
+   
 <nav>
     <%@include file="Header.jsp" %>   
 </nav>
-  
+  <%= userId %>
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-3 sidenav">
@@ -306,20 +317,32 @@ h3{
     </div>
         <div class="col-sm-6 text-left topbar"> 
         <div>
-            <%@include file="ChatBox.jsp" %>
-<!--      file="AboutProfile.jsp"  file="Friends.jsp"   file="Photos.jsp"    file="CenterPage.jsp"-->
+            <%@include  file="AboutProfile.jsp" %>
+<!--      file="AboutProfile.jsp"  file="Friends.jsp"  file="ChatBox.jsp"  file="Photos.jsp"    file="CenterPage.jsp"-->
         </div>
     </div>
     <div class="col-sm-3 sidenav ">
         <div>
             <%@include file="ShowProfile.jsp"%>
-<!--             file="RightNav.jsp"-->
+<!--              file="ShowProfile.jsp" file="RightNav.jsp"-->
         </div>
     </div>
   </div>
 </div>
 
+<%
+
+}
+else{
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
+}
+
+%>
 
 
 </body>
 </html>
+
+
+
+
