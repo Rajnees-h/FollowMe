@@ -33,7 +33,7 @@ and open the template in the editor.
     </div>
     <div class="checkbox">
       <label><input type="checkbox"> Remember me</label> 
-      <label><a href="#">Create New Account</a></label>
+      <label><a href="CreateNewAccount.jsp">Create New Account</a></label>
     </div>
     
     <button type="submit" class="btn btn-default">Login</button>

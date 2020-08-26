@@ -4,6 +4,23 @@
     Author     : rowdy
 --%>
 
+
+ 
+    <%
+        Profile profile = null;
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String userId = (String) session.getAttribute("userId");
+          profile = DatabaseConnection.getProfile(Integer.parseInt(userId));
+          
+    %>
+
+
 <%@page import="com.FollowMe.DatabaseClasses.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,6 +33,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   
   <style>
       
@@ -280,6 +298,13 @@ h3{
     border-radius: 50px;    
     background: white;
 }
+
+
+/* input in update Profile*/
+.input{
+    margin-top:10px;
+    margin-bottom: 15px;
+}
  
     
     /* On small screens, set height to 'auto' for sidenav and grid */
@@ -293,55 +318,157 @@ h3{
   </style>
 </head>
 
-<body>
- 
-    <%
-      session = request.getSession(false);
-      if(session != null)
-      {
-          String userId = (String) session.getAttribute("userId");
-        
-    %>
+<%
+    String centerPage = "Home";
+    String leftSideBar = "Menubar";
+    String rightSideBar ="Chatbar";
     
-   
+    String centerPageURL = request.getParameter("centerPage");
+    String leftPageURL = request.getParameter("leftPage");
+    String rightPageURL = request.getParameter("rightPage");
+    
+    if(centerPageURL != null && centerPageURL != "")
+        centerPage = centerPageURL;
+    
+    if(leftPageURL != null && leftPageURL != "")
+        leftSideBar = leftPageURL;
+    
+    if(rightPageURL != null && rightPageURL != "")
+        rightSideBar = rightPageURL;
+    
+
+
+
+%>
+
+
+
+
+
+
+<body>
+
 <nav>
     <%@include file="Header.jsp" %>   
 </nav>
-  <%= userId %>
+
 <div class="container-fluid text-center">    
   <div class="row content">
     <div class="col-sm-3 sidenav">
-        <div>
+        <div id="leftSideBar">
             <%@include file="LeftNav.jsp" %>
         </div>
     </div>
-        <div class="col-sm-6 text-left topbar"> 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+<!--    Center Page     
+        -->
+        
+        
+        
+        
+        
+    <div class="col-sm-6 text-left topbar"> 
         <div>
-            <%@include  file="AboutProfile.jsp" %>
+            
+            <%  
+                            switch(centerPage)
+                            {
+                                case "Home":  %>  <%@include  file="CenterPage.jsp"  %> <%
+                                    break;
+                                    
+                                case "Friends":  %>  <%@include  file="Friends.jsp"  %> <%
+                                    break;
+                                    
+                                case "AboutProfile":  %>  <%@include  file="AboutProfile.jsp"  %> <%
+                                    break;
+                                    
+                                case "EditProfile":  %>  <%@include  file="EditProfile.jsp"  %> <%
+                                    break;
+                                    
+                                case "Photos":  %>  <%@include  file="Photos.jsp"  %> <%
+                                    break;
+                                    
+                                    default : %>  <%@include  file="CenterPage.jsp"  %> <%
+
+                                
+                            }
+            %>
+
 <!--      file="AboutProfile.jsp"  file="Friends.jsp"  file="ChatBox.jsp"  file="Photos.jsp"    file="CenterPage.jsp"-->
         </div>
     </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+<!--      Right Side Bar   
+            -->
     <div class="col-sm-3 sidenav ">
-        <div>
-            <%@include file="ShowProfile.jsp"%>
+        <div id="rightSideBar">
+           
+            <%  
+                            switch(rightSideBar)
+                            {
+                                case "Chatbar":  %>  <%@include  file="RightNav.jsp"  %> <%
+                                    break;
+                                    
+                                case "ShowProfile":  %>  <%@include  file="ShowProfile.jsp"  %> <%
+                                    break;
+                                
+                                    
+                                    default : %>  <%@include  file="RightNav.jsp"  %> <%
+
+                                
+                            }
+            %>
+ 
 <!--              file="ShowProfile.jsp" file="RightNav.jsp"-->
         </div>
     </div>
   </div>
 </div>
 
-<%
-
-}
-else{
-        request.getRequestDispatcher("Login.jsp").forward(request, response);
-}
-
-%>
-
+            <script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.post("demo_test_post.asp",
+    {
+      name: "Donald Duck",
+      city: "Duckburg"
+    },
+    function(data,status){
+      alert("Data: " + data + "\nStatus: " + status);
+    });
+  });
+});
+</script>
+            
+            
 
 </body>
 </html>
+
+
+
+<%
+  
+}
+
+%>
 
 
 

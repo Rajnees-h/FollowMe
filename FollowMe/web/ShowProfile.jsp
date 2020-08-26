@@ -19,10 +19,11 @@
             <hr/>
             
             <div class="list-group">
-                <a href="#" class=" menu-options list-group-item ">Timeline</a>
-                <a href="#" class=" menu-options list-group-item">About</a>
-                <a href="#" class=" menu-options list-group-item">Friends</a>
-                <a href="#" class=" menu-options list-group-item ">Photos</a>
+                <a href="MasterPage.jsp?centerPage=Home&rightPage=ShowProfile" class=" menu-options list-group-item ">Timeline</a>
+                <a href="MasterPage.jsp?centerPage=AboutProfile&rightPage=ShowProfile" class=" menu-options list-group-item">About</a>
+                <a href="MasterPage.jsp?centerPage=EditProfile&rightPage=ShowProfile" class=" menu-options list-group-item">Edit Profile</a>
+                <a href="MasterPage.jsp?centerPage=Friends&rightPage=ShowProfile" class=" menu-options list-group-item">Friends</a>
+                <a href="MasterPage.jsp?centerPage=Photos&rightPage=ShowProfile" class=" menu-options list-group-item ">Photos</a>
 
             </div>
             

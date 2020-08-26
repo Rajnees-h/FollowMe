@@ -34,7 +34,8 @@ public class LoginAccount extends HttpServlet {
         {
             User user = DatabaseConnection.getUser(new User(userEmailAddress,userPassword));
             HttpSession session = request.getSession();
-            session.setAttribute("UserId", user.getUserId());
+            session.setAttribute("userId",user.getUserId());
+            
            
             
             request.getRequestDispatcher("MasterPage.jsp").forward(request, response);

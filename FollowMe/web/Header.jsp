@@ -4,6 +4,18 @@
     Author     : rowdy
 --%>
 
+<%
+String loginOrLogout = " Login";
+if(request.getSession(false).getAttribute("userId") != null)
+{
+    loginOrLogout = " Log Out"; 
+} 
+
+
+
+%>
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,8 +35,8 @@
       <li><a href="#">Chat</a></li>
     </ul>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-      <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a href="CreateNewAccount.jsp"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href="Logout"><span class="glyphicon glyphicon-log-in"></span>  <%= loginOrLogout %></a></li>
     </ul>
   </div>
 </nav>

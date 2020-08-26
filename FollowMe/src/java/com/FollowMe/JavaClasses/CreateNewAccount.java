@@ -5,6 +5,7 @@
  */
 package com.FollowMe.JavaClasses;
 
+import com.FollowMe.DatabaseClasses.Profile;
 import com.FollowMe.DatabaseClasses.User;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -38,6 +39,11 @@ public class CreateNewAccount extends HttpServlet {
         String userPassword = request.getParameter("userPassword");
      
         DatabaseConnection.insertUser(new User(userEmailAddress,userPassword));
+      
+        Profile profile = new Profile();
+        profile.setUserId(DatabaseConnection.getUserId(userEmailAddress));
+        profile.setEmailAddress(userEmailAddress);
+        DatabaseConnection.insertProfile(profile);
         request.getRequestDispatcher("LoginAccount").forward(request, response);
          
     }

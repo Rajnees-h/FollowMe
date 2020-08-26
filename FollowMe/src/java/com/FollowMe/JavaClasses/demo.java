@@ -15,7 +15,7 @@ public class demo {
     
     public static void main(String[] args) {
         
-        System.out.println(DatabaseConnection.validateUser(new User("Rajneesh","Rajneesh")));
+        System.out.println(DatabaseConnection.getProfile(2).getName());
         
     }
     
