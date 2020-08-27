@@ -4,6 +4,24 @@
     Author     : rowdy
 --%>
 
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%
+        Profile profile = null;
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+        String UserId = (String) request.getParameter("UserId");
+     
+          
+    %>
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,19 +33,51 @@
         <div class="card">
   
             <img src="images/iron.jpg" class="img-circle" alt="Cinque Terre" width="250" height="250">
-            <h2>User Name</h2>
+            <h2> <%= DatabaseConnection.getUserName(UserId) %> </h2>
             <hr/>
             
             <div class="list-group">
-                <a href="MasterPage.jsp?centerPage=Home&rightPage=ShowProfile" class=" menu-options list-group-item ">Timeline</a>
-                <a href="MasterPage.jsp?centerPage=AboutProfile&rightPage=ShowProfile" class=" menu-options list-group-item">About</a>
-                <a href="MasterPage.jsp?centerPage=EditProfile&rightPage=ShowProfile" class=" menu-options list-group-item">Edit Profile</a>
-                <a href="MasterPage.jsp?centerPage=Friends&rightPage=ShowProfile" class=" menu-options list-group-item">Friends</a>
-                <a href="MasterPage.jsp?centerPage=Photos&rightPage=ShowProfile" class=" menu-options list-group-item ">Photos</a>
+                <Button id="Home2" class=" menu-options list-group-item ">Timeline</Button>
+                <Button id="About2" class=" menu-options list-group-item">About</Button>
+                <Button id="EditProfile2" class=" menu-options list-group-item">Edit Profile</Button>
+                <Button id="Friends2" class=" menu-options list-group-item">Friends</Button>
+                <Button id="Photos2" class=" menu-options list-group-item ">Photos</Button>
 
             </div>
             
             
         </div>
+        
+          <script>
+     
+     $("#Home2").on("click", function() {
+       $("#CenterPage").load("CenterPage.jsp",{UserId:<%= UserId%>});
+    });
+        
+    $("#Friends2").on("click", function() {
+       $("#CenterPage").load("Friends.jsp",{UserId:<%= UserId%>});
+    });
+    
+    $("#EditProfile2").on("click", function() {
+       $("#CenterPage").load("EditProfile.jsp",{UserId:<%= UserId%>});
+    });
+    
+    $("#About2").on("click", function() {
+       $("#CenterPage").load("AboutProfile.jsp",{UserId:<%= UserId%>});
+    });
+    
+    $("#Photos2").on("click", function() {
+       $("#CenterPage").load("Photos.jsp",{UserId:<%= UserId%>});
+    });
+    
+    </script>
+    
+        
     </body>
+    
+  
 </html>
+
+<%
+}
+%>

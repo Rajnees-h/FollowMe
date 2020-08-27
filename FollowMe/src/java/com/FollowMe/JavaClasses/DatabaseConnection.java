@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
@@ -119,6 +121,39 @@ public class DatabaseConnection {
     
     
     //// get User Id
+     
+     // Get all Users Id
+     
+     public static List<String> getAllUserId(){
+         List<String> output = new ArrayList<>();
+         
+        String query = "Select UserId from User";
+        
+        try{
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(query);
+    
+            ResultSet resultSet = preparedStatement.executeQuery();
+            
+            while(resultSet.next())
+            {
+                    output.add(resultSet.getString(1));
+         
+            }
+            
+            
+        
+        }catch(Exception e){System.out.println("Error in get All User's Id : "+e.getMessage() );}
+        
+   
+         return output;
+     }
+     
+     
+     // Get all Users Id
+     
+     
+     
     
     // to get User from database
     public static User getUser(User user)
@@ -291,11 +326,37 @@ public class DatabaseConnection {
                
             }
             
-            
+         
         
         }catch(Exception e){System.out.println("Error in validate User : "+e.getMessage() );}
         
         return profile;
+    }
+    
+    public static String getUserName(String userId){
+       String userName = null;
+        String query = "SELECT Name FROM Profile WHERE UserId = ?";
+        
+        try{
+            connection = getConnection();
+            preparedStatement = connection.prepareStatement(query);
+
+            preparedStatement.setInt(1,Integer.parseInt(userId));
+            
+            ResultSet resultSet = preparedStatement.executeQuery();
+          
+            
+            while(resultSet.next())
+            {
+                
+                    userName = resultSet.getString(1);
+         
+            }
+            
+         
+        }catch(Exception e){System.out.println("Error in get User Name : "+e.getMessage() );}
+        
+        return userName;
     }
     
     

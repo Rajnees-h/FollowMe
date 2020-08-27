@@ -4,6 +4,25 @@
     Author     : rowdy
 --%>
 
+
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String my_userId = (String) session.getAttribute("userId");
+          String friends_userId = (String)request.getParameter("UserId");
+          
+          String my_name = DatabaseConnection.getUserName(my_userId);
+          String friends_name = DatabaseConnection.getUserName(friends_userId);
+          
+%>
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,7 +41,7 @@
                     </div>
                     <div class="col-md-10">
                     
-                              <h4 class="text-left">UserName</h4>
+                        <h4 class="text-left"> <%= friends_name %> </h4>
                          <p class="text-left">last seen</p>
                       
                     </div>
@@ -174,3 +193,8 @@
         
     </body>
 </html>
+
+
+<%
+}
+%>

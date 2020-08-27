@@ -1,12 +1,13 @@
 <%-- 
-    Document   : MasterPage
-    Created on : 5 Aug, 2020, 12:24:37 AM
+    Document   : HomePage
+    Created on : 27 Aug, 2020, 12:10:24 PM
     Author     : rowdy
 --%>
 
 
  
-    <%
+    <%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%
         Profile profile = null;
         
       session = request.getSession(false);
@@ -317,32 +318,6 @@ h3{
   </style>
 </head>
 
-<%
-    String centerPage = "Home";
-    String leftSideBar = "Menubar";
-    String rightSideBar ="Chatbar";
-    
-    String centerPageURL = request.getParameter("centerPage");
-    String leftPageURL = request.getParameter("leftPage");
-    String rightPageURL = request.getParameter("rightPage");
-    
-    if(centerPageURL != null && centerPageURL != "")
-        centerPage = centerPageURL;
-    
-    if(leftPageURL != null && leftPageURL != "")
-        leftSideBar = leftPageURL;
-    
-    if(rightPageURL != null && rightPageURL != "")
-        rightSideBar = rightPageURL;
-    
-
-
-
-%>
-
-
-
-
 
 
 <body>
@@ -353,98 +328,80 @@ h3{
 
 <div class="container-fluid text-center">    
   <div class="row content">
+      
+      
     <div class="col-sm-3 sidenav">
         <div id="leftSideBar">
             <%@include file="LeftNav.jsp" %>
         </div>
     </div>
         
-        
-        
-        
-        
-        
-        
-        
-        
+
         
 <!--    Center Page     
         -->
+   
         
-        
-        
-        
-        
-        <div id="CenterPage" class="col-sm-6 text-left topbar"> 
+    <div id="CenterPage" class="col-sm-6 text-left topbar"> 
         <div>
-            
-            <%  
-                            switch(centerPage)
-                            {
-                                case "Home":  %>  <%@include  file="CenterPage.jsp"  %> <%
-                                    break;
-                                    
-                                case "Friends":  %>  <%@include  file="Friends.jsp"  %> <%
-                                    break;
-                                    
-                                case "AboutProfile":  %>  <%@include  file="AboutProfile.jsp"  %> <%
-                                    break;
-                                    
-                                case "EditProfile":  %>  <%@include  file="EditProfile.jsp"  %> <%
-                                    break;
-                                    
-                                case "Photos":  %>  <%@include  file="Photos.jsp"  %> <%
-                                    break;
-                                    
-                                case "SearchPeople":  %>  <%@include  file="SearchPeople.jsp"  %> <%
-                                    break;
-                                    
-                                    default : %>  <%@include  file="CenterPage.jsp"  %> <%
-
-                                
-                            }
-            %>
-
-<!--      file="AboutProfile.jsp"  file="Friends.jsp"  file="ChatBox.jsp"  file="Photos.jsp"    file="CenterPage.jsp"-->
+            <%@include file="CenterPage.jsp" %>
         </div>
     </div>
-            
-            
-            
-            
-            
-            
-            
-            
-            
+      
 <!--      Right Side Bar   
             -->
     <div class="col-sm-3 sidenav ">
         <div id="rightSideBar">
-           
-            <%  
-                            switch(rightSideBar)
-                            {
-                                case "Chatbar":  %>  <%@include  file="RightNav.jsp"  %> <%
-                                    break;
-                                    
-                                case "ShowProfile":  %>  <%@include  file="ShowProfile.jsp"  %> <%
-                                    break;
-                                
-                                    
-                                    default : %>  <%@include  file="RightNav.jsp"  %> <%
-
-                                
-                            }
-            %>
- 
-<!--              file="ShowProfile.jsp" file="RightNav.jsp"-->
+            <%@include file="RightNav.jsp" %>
         </div>
     </div>
+            
+            
   </div>
 </div>
             
+<script>
+$(document).ready( function() {
+    $("#SearchPeople").on("click", function() {
+        $("#CenterPage").load("SearchPeople.jsp");
+    });
+    
+     $("#Home").on("click", function() {
+        $("#CenterPage").load("CenterPage.jsp");
+    });
+    
+     $("#MyProfile").on("click", function() {
+         $.post('ShowProfile.jsp',{UserId:<%= userId%>},function(data){
+             $('#rightSideBar').html(data);
+         });
+        $("#CenterPage").load("CenterPage.jsp")
+    });
+    
+     $("#Chat").on("click", function() {
+        $("#rightSideBar").load("RightNav.jsp");
+    });
+    
+     $("#Friends").on("click", function() {
+        $("#CenterPage").load("Friends.jsp");
+    });
+    
+     $("#EditProfile").on("click", function() {
+        $("#rightSideBar").load("ShowProfile.jsp");
+        $("#CenterPage").load("EditProfile.jsp")
+    });
+    
+     $("#Photos").on("click", function() {
+        $("#CenterPage").load("Photos.jsp");
+    });
+    
+    $("#About").on("click", function() {
+        $("#CenterPage").load("AboutProfile.jsp");
+    });
+ 
 
+    
+});
+</script>
           
 
 <script>

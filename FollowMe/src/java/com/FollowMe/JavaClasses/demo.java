@@ -15,7 +15,7 @@ public class demo {
     
     public static void main(String[] args) {
         
-        System.out.println(DatabaseConnection.getProfile(2).getName());
+        System.out.println(DatabaseConnection.getUserName("5"));
         
     }
     

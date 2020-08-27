@@ -4,17 +4,19 @@
     Author     : rowdy
 --%>
 
-<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
 <%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
 <%
-
-   
-  session = request.getSession(false);
+    
+      session = request.getSession(false);
       if( (session == null) || (session.getAttribute("userId") == null))
           request.getRequestDispatcher("Login.jsp").forward(request, response);
-      else{
-
-      %>
+    
+      else
+      {  
+          String userId = (String) request.getParameter("UserId");
+          Profile profile = DatabaseConnection.getProfile(Integer.parseInt(userId));
+%>
 
 
 
@@ -26,6 +28,8 @@
         <title>JSP Page</title>
     </head>
     <body>
+        
+     
         
         <h3>Personal Information</h3>
  

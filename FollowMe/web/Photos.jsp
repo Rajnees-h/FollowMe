@@ -4,6 +4,23 @@
     Author     : rowdy
 --%>
 
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%
+        Profile profile = null;
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String userId = (String) request.getParameter("UserId");
+          
+    %>
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,7 +30,7 @@
     </head>
     <body>
         
-        
+        <h2>Photos of  <%= DatabaseConnection.getUserName(userId) %> </h2>
         
 <!-- Photo Grid -->
 <div class="row"> 
@@ -127,3 +144,8 @@
         
     </body>
 </html>
+
+
+<%
+}
+%>

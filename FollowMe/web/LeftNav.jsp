@@ -42,25 +42,30 @@ if(request.getSession(false).getAttribute("userId") != null)
             </a>
             </div>
    
-                    <a href="MasterPage.jsp" class=" menu-options list-group-item ">Home</a>
-                    <a href="MasterPage.jsp?rightPage=chatbar" class=" menu-options list-group-item">Chat</a>
-                    <a href="#" class=" menu-options list-group-item">Notifications</a>
+                    <Button id="Home" class=" menu-options list-group-item ">Home</Button>
+                    <Button id="Chat" class=" menu-options list-group-item">Chat</Button>
+                    <Button id="Notification" class=" menu-options list-group-item">Notifications</Button>
 
-                     <a href="MasterPage.jsp?centerPage=Friends" class=" menu-options list-group-item ">Friends</a>
-                     <a href="#" class=" menu-options list-group-item ">Search People</a>
+                    <Button id="Friends" class=" menu-options list-group-item ">Friends</Button>
+                    <Button id="SearchPeople"  class=" menu-options list-group-item">Search People</Button>
 
-                     <a href="#" class=" menu-options list-group-item">Groups</a>
-                     <a href="#" class=" menu-options list-group-item menu-options">Make New Group</a>
+                    <Button id="Groups" class=" menu-options list-group-item">Groups</Button>
+                     <Button id="MakeNewGroup" class=" menu-options list-group-item menu-options">Make New Group</Button>
 
-                    <a href="MasterPage.jsp?rightPage=ShowProfile" class=" menu-options list-group-item ">My Profile</a>
-                    <a href="#" class=" menu-options list-group-item">Edit Profile</a>
+                     <Button id="MyProfile" class=" menu-options list-group-item ">My Profile </Button>
+                     <Button id="EditProfile" class=" menu-options list-group-item">Edit Profile</Button>
 
 <!--                     <a href="#" class=" menu-options list-group-item menu-options">Login Account</a>-->
-                    <a href="Logout.java" class=" menu-options list-group-item ">Logout</a>
+                    <Button id="Logout" class=" menu-options list-group-item ">Logout</Button>
     
     
    
     
     </div>
     </body>
+    
+    
+
+    
+    
 </html>

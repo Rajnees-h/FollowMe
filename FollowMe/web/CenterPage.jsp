@@ -4,6 +4,23 @@
     Author     : rowdy
 --%>
 
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%
+       
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String userId_cp = (String) request.getParameter("UserId");
+          
+%>
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -43,7 +60,7 @@
                 </div>
                  <div class="col-md-9">
                     <dl>
-                        <dt>User Name</dt>
+                        <dt> <%= DatabaseConnection.getUserName(userId_cp) %> </dt>
                         <dd>-Feeling happy wiht raj,rahul and 5 others</dd>
                         <dd>-Post timing</dd>
                     </dl>  
@@ -327,3 +344,8 @@
       
     </body>
 </html>
+
+
+<%
+}
+%>

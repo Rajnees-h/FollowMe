@@ -4,6 +4,23 @@
     Author     : rowdy
 --%>
 
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%@page import="com.FollowMe.DatabaseClasses.Profile"%>
+<%
+        Profile profile = null;
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String userId = (String) request.getParameter("UserId");
+          
+%>
+
+
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +31,7 @@
     <body>
         
            
-        <h3>Mutual Friends</h3>
+        <h3>Mutual Friends with <%= DatabaseConnection.getUserName(userId) %> </h3>
         
        
                  
@@ -238,3 +255,8 @@
    
     </body>
 </html>
+
+
+<%
+}
+%>

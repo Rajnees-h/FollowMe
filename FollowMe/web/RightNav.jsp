@@ -4,6 +4,21 @@
     Author     : rowdy
 --%>
 
+<%@page import="java.util.List"%>
+<%@page import="com.FollowMe.JavaClasses.DatabaseConnection"%>
+<%
+        
+      session = request.getSession(false);
+      if( (session == null) || (session.getAttribute("userId") == null))
+          request.getRequestDispatcher("Login.jsp").forward(request, response);
+    
+      else
+      {  
+          String UserId = (String) session.getAttribute("userId");
+         List<String> friends = DatabaseConnection.getAllUserId();
+          
+%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -15,7 +30,39 @@
     
         <h3>Online Friends</h3>
         <hr/>
- 
+        
+        
+<%
+    for(String friend : friends){
+    String friendName = DatabaseConnection.getUserName(friend);
+    
+    %>
+    
+    <div name="<%=friend%>" class="card chatCard drill_cursor">
+       <div class="row">
+                <div class="col-md-2">
+                    <img class="img-circle center-block" src="images/iron.jpg" style="width:50px; height: 50px">
+                </div>
+                <div class="col-md-10">
+                   <div class="card">
+                        <div class="card-body">
+                            <dl class="text-left" style="padding-left: 20px">
+                                 <dt > <%= friendName %> </dt>
+                                 <dd >last seen</dd>
+                              </dl>
+                        </div>
+                    </div>
+                </div>
+            </div>
+   
+  </div>
+
+    <%
+    
+    }
+
+%>
+<!-- 
   <div class="card chatCard">
        <div class="row">
                 <div class="col-md-2">
@@ -371,7 +418,7 @@
                 </div>
             </div>
          </div>
-        
+        -->
         
 <!--  </div>
   <br>
@@ -472,7 +519,22 @@
           <div class="well">
             <p>ADS</p>
         </div>-->
+
+
+<script>
+    $(document).ready(function(){
+        $(".drill_cursor").click(function(){
+             var id = $(this).attr('name');
+             $('#CenterPage').load('ChatBox.jsp',{UserId:id});
+         });
+    });
+</script>
         
         
     </body>
 </html>
+
+
+<%
+}
+%>

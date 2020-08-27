@@ -14,6 +14,8 @@ if(request.getSession(false) == null)
     request.getRequestDispatcher("Login.jsp").forward(request, response);
 }
 else{
+         String userId = (String) session.getAttribute("userId");
+         Profile profile = DatabaseConnection.getProfile(Integer.parseInt(userId));
 
 %>
 

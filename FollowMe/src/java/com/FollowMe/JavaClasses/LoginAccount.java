@@ -38,7 +38,7 @@ public class LoginAccount extends HttpServlet {
             
            
             
-            request.getRequestDispatcher("MasterPage.jsp").forward(request, response);
+            request.getRequestDispatcher("HomePage.jsp").forward(request, response);
         }
         else
             request.getRequestDispatcher("Login.jsp").forward(request, response);
